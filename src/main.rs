@@ -15,7 +15,7 @@ fn main() {
         let path = Path::new(&spec_path);
         if !path.exists() {
             println!("Usage: {} <spec path>", args[0]);
-            process::exit(-1);
+            process::exit(128);
         }
     } else {
         spec_path = args[1].to_owned();
