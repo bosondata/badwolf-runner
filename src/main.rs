@@ -1,6 +1,7 @@
 extern crate badwolf_spec;
 
 use std::env;
+use std::path::Path;
 use std::process;
 
 use badwolf_spec::Runner;
@@ -8,11 +9,17 @@ use badwolf_spec::Runner;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    let spec_path: String;
     if args.len() != 2 {
-        println!("Usage: badwolf-run <spec file>");
-        process::exit(-1);
+        spec_path = ".badwolf.yml".to_owned();
+        let path = Path::new(&spec_path);
+        if !path.exists() {
+            println!("Usage: badwolf-run <spec path>");
+            process::exit(-1);
+        }
+    } else {
+        spec_path = args[1].to_owned();
     }
-    let spec_path = &args[1];
     let runner = Runner::from_file(&spec_path);
     runner.run();
 }
