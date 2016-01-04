@@ -1,0 +1,15 @@
+[package]
+authors = ["messense <messense@icloud.com>"]
+name = "badwolf-spec"
+version = "0.1.0"
+
+[dependencies]
+yaml-rust = "0.3.0"
+
+[lib]
+name = "badwolf_spec"
+path = "src/lib.rs"
+
+[[bin]]
+name = "badwolf-run"
+path = "src/main.rs"
