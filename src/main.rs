@@ -14,7 +14,7 @@ fn main() {
         spec_path = ".badwolf.yml".to_owned();
         let path = Path::new(&spec_path);
         if !path.exists() {
-            println!("Usage: badwolf-run <spec path>");
+            println!("Usage: {} <spec path>", args[0]);
             process::exit(-1);
         }
     } else {
