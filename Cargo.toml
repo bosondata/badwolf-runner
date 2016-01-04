@@ -1,13 +1,13 @@
 [package]
 authors = ["messense <messense@icloud.com>"]
-name = "badwolf-spec"
+name = "badwolf-runner"
 version = "0.1.0"
 
 [dependencies]
 yaml-rust = "0.3.0"
 
 [lib]
-name = "badwolf_spec"
+name = "badwolf_runner"
 path = "src/lib.rs"
 
 [[bin]]

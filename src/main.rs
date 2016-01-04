@@ -1,10 +1,10 @@
-extern crate badwolf_spec;
+extern crate badwolf_runner;
 
 use std::env;
 use std::path::Path;
 use std::process;
 
-use badwolf_spec::Runner;
+use badwolf_runner::Runner;
 
 
 fn main() {
