@@ -21,5 +21,5 @@ fn main() {
         spec_path = args[1].to_owned();
     }
     let runner = Runner::from_file(&spec_path);
-    runner.run();
+    process::exit(runner.run());
 }
