@@ -1,7 +1,7 @@
 [package]
 authors = ["messense <messense@icloud.com>"]
 name = "badwolf-runner"
-version = "0.1.0"
+version = "0.1.1"
 
 [dependencies]
 yaml-rust = "0.3.0"
