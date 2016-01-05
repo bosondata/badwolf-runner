@@ -10,12 +10,24 @@ pub struct Notification {
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Specification {
     pub dockerfile: String,
+    pub services: Vec<String>,
     pub scripts: Vec<String>,
     pub after_success: Vec<String>,
     pub after_failure: Vec<String>,
     pub notification: Notification,
 }
 
+
+fn get_string_vec(doc: &Yaml) -> Vec<String> {
+    let str_vec = match doc {
+        &Yaml::String(ref item) => vec![item.to_owned()],
+        &Yaml::Array(ref item) => {
+            item.iter().map(|x| x.as_str().unwrap_or("").to_owned()).collect()
+        }
+        _ => vec![],
+    };
+    str_vec
+}
 
 impl Specification {
 
@@ -29,6 +41,7 @@ impl Specification {
                     };
                     return Specification {
                         dockerfile: "Dockerfile".to_owned(),
+                        services: vec![],
                         scripts: vec![],
                         after_success: vec![],
                         after_failure: vec![],
@@ -40,40 +53,15 @@ impl Specification {
                     &Yaml::String(ref dockerfile) => dockerfile.to_owned(),
                     _ => "Dockerfile".to_owned(),
                 };
-                let scripts = match &doc["script"] {
-                    &Yaml::String(ref script) => vec![script.to_owned()],
-                    &Yaml::Array(ref script) => {
-                        script.iter().map(|x| x.as_str().unwrap_or("").to_owned()).collect()
-                    }
-                    _ => vec![],
-                };
-                let after_success = match &doc["after_success"] {
-                    &Yaml::String(ref script) => vec![script.to_owned()],
-                    &Yaml::Array(ref script) => {
-                        script.iter().map(|x| x.as_str().unwrap_or("").to_owned()).collect()
-                    }
-                    _ => vec![],
-                };
-                let after_failure = match &doc["after_failure"] {
-                    &Yaml::String(ref script) => vec![script.to_owned()],
-                    &Yaml::Array(ref script) => {
-                        script.iter().map(|x| x.as_str().unwrap_or("").to_owned()).collect()
-                    }
-                    _ => vec![],
-                };
+                let services = get_string_vec(&doc["service"]);
+                let scripts = get_string_vec(&doc["script"]);
+                let after_success = get_string_vec(&doc["after_success"]);
+                let after_failure = get_string_vec(&doc["after_failure"]);
                 let notification = match &doc["notification"] {
                     &Yaml::Hash(ref notif) => {
                         let key = Yaml::String("email".to_owned());
                         let email = match notif.get(&key) {
-                            Some(email) => {
-                                match email {
-                                    &Yaml::String(ref mail) => vec![mail.to_owned()],
-                                    &Yaml::Array(ref mail) => {
-                                        mail.iter().map(|x| x.as_str().unwrap_or("").to_owned()).collect()
-                                    },
-                                    _ => vec![],
-                                }
-                            },
+                            Some(email) => get_string_vec(email),
                             None => vec![],
                         };
                         Notification {
@@ -88,6 +76,7 @@ impl Specification {
                 };
                 Specification {
                     dockerfile: dockerfile,
+                    services: services,
                     scripts: scripts,
                     after_success: after_success,
                     after_failure: after_failure,
@@ -100,6 +89,7 @@ impl Specification {
                 };
                 Specification {
                     dockerfile: "Dockerfile".to_owned(),
+                    services: vec![],
                     scripts: vec![],
                     after_success: vec![],
                     after_failure: vec![],

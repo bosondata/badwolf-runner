@@ -48,6 +48,11 @@ impl Runner {
     }
 
     pub fn run(&self) -> i32 {
+        let start_services_commands: Vec<String> = self.spec.services.iter()
+                                                                     .map(|x| format!("service {} start", x))
+                                                                     .collect();
+        self.run_commands(&start_services_commands);
+
         let (success, exit_code) = self.run_commands(&self.spec.scripts);
         if success {
             self.run_commands(&self.spec.after_success);
