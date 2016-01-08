@@ -3,13 +3,14 @@ authors = ["messense <messense@icloud.com>"]
 name = "badwolf-runner"
 version = "0.1.1"
 
+[[bin]]
+name = "badwolf-run"
+path = "src/main.rs"
+
 [dependencies]
+clap = "1.5.5"
 yaml-rust = "0.3.0"
 
 [lib]
 name = "badwolf_runner"
 path = "src/lib.rs"
-
-[[bin]]
-name = "badwolf-run"
-path = "src/main.rs"

@@ -1,25 +1,32 @@
+extern crate clap;
 extern crate badwolf_runner;
 
 use std::env;
 use std::path::Path;
 use std::process;
 
+use clap::{Arg, App};
 use badwolf_runner::Runner;
 
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let spec_path: String;
-    if args.len() != 2 {
-        spec_path = ".badwolf.yml".to_owned();
-        let path = Path::new(&spec_path);
-        if !path.exists() {
-            println!("Usage: {} <spec path>", args[0]);
-            process::exit(128);
-        }
-    } else {
-        spec_path = args[1].to_owned();
+    let mut app = App::new("badwolf-run")
+                      .version(env!("CARGO_PKG_VERSION"))
+                      .author("Messense Lv <messense@icloud.com")
+                      .about("Badwolf test runner")
+                      .arg(Arg::with_name("SPEC")
+                            .help("Badwolf specification path")
+                            .required(false)
+                            .index(1));
+    let matches = app.get_matches_from_safe_borrow(env::args())
+                     .unwrap_or_else(|_| { process::exit(128) });
+    let spec_path = matches.value_of("SPEC")
+                           .unwrap_or(".badwolf.yml");
+    let path = Path::new(spec_path);
+    if !path.exists() {
+        let _ = app.print_help();
+        process::exit(128);
     }
-    let runner = Runner::from_file(&spec_path);
+    let runner = Runner::from_file(spec_path);
     process::exit(runner.run());
 }
