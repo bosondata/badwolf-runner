@@ -79,7 +79,7 @@ mod tests {
     }
 
     #[test]
-    fn test_fn_failure() {
+    fn test_run_failure() {
         let spec = "
         script: not-exists-command
         after_failure: ls -lrth
@@ -87,5 +87,15 @@ mod tests {
         let runner = Runner::from_str(spec);
         let exit_code = runner.run();
         assert_eq!(exit_code, 127i32);
+    }
+
+    #[test]
+    fn test_run_print_env() {
+        let spec = "
+        script: printenv
+        ";
+        let runner = Runner::from_str(spec);
+        let exit_code = runner.run();
+        assert_eq!(exit_code, 0i32);
     }
 }
