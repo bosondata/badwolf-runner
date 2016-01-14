@@ -1,0 +1,10 @@
+dockerfile: Dockerfile.test
+
+script:
+  - cargo test
+
+branch:
+  - master
+
+notification:
+  email: tech@bosondata.com.cn

@@ -1,10 +1,7 @@
-FROM python:2.7
-MAINTAINER Messense Lv <messense@icloud.com>
+FROM messense:badwolf-test-runner
 
 ENV RUST_VERSION=1.5.0
 ENV RUST_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-
-COPY . /app
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -22,6 +19,3 @@ RUN apt-get update && \
     /var/lib/apt/lists/* \
     /tmp/* \
     /var/tmp/* && \
-    cd /app && cargo build --release && cargo test && cp /app/target/release/badwolf-run /usr/bin/badwolf-run  && \
-    /usr/local/lib/rustlib/uninstall.sh && \
-    rm -rf /app
