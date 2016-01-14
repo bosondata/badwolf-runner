@@ -1,4 +1,4 @@
-FROM messense:badwolf-test-runner
+FROM messense/badwolf-test-runner
 
 ENV RUST_VERSION=1.5.0
 ENV RUST_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
