@@ -1,7 +1,7 @@
 FROM python:2.7
 MAINTAINER Messense Lv <messense@icloud.com>
 
-ENV RUST_VERSION=1.5.0
+ENV RUST_VERSION=1.6.0
 ENV RUST_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
 COPY . /app
