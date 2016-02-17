@@ -18,8 +18,9 @@ RUN wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add
     curl \
     git \
     libssl-dev \
+    shellcheck \
     nodejs && \
-    npm install -g jscs eslint && \
+    npm install -g jscs eslint csslint sass-lint jsonlint && \
     curl -sO $RUST_DIST_SERVER/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz && \
     tar -xzf rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz && \
     ./rust-$RUST_VERSION-x86_64-unknown-linux-gnu/install.sh --without=rust-docs && \
