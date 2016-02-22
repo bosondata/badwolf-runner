@@ -8,8 +8,8 @@ name = "badwolf-run"
 path = "src/main.rs"
 
 [dependencies]
-clap = "1.5.5"
-yaml-rust = "0.3.0"
+clap = "2.1"
+yaml-rust = "0.3"
 
 [lib]
 name = "badwolf_runner"
