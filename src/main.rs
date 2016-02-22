@@ -1,12 +1,16 @@
 extern crate clap;
-extern crate badwolf_runner;
+extern crate yaml_rust;
 
 use std::env;
 use std::path::Path;
 use std::process;
 
 use clap::{Arg, App};
-use badwolf_runner::Runner;
+
+mod spec;
+mod runner;
+
+use runner::Runner;
 
 
 fn main() {

@@ -10,7 +10,3 @@ path = "src/main.rs"
 [dependencies]
 clap = "2.1"
 yaml-rust = "0.3"
-
-[lib]
-name = "badwolf_runner"
-path = "src/lib.rs"
