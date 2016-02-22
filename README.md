@@ -8,8 +8,10 @@ This is a standard [Cargo](https://crates.io/) project,
 
 ## Build image
 
+Build python image for example:
+
 ```bash
-$ docker build -t badwolf-test-runner
+$ docker build -t messense/badwolf-test-runner:python -f dockerfiles/python.Dockerfile .
 ```
 
 ## Build runner locally
