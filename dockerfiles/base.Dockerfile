@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM ubuntu:trusty
 MAINTAINER Messense Lv <messense@icloud.com>
 
 ENV RUST_VERSION=1.6.0
@@ -11,6 +11,7 @@ RUN apt-get update && \
     build-essential \
     ca-certificates \
     curl \
+    wget \
     git \
     libssl-dev && \
     curl -sO $RUST_DIST_SERVER/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz && \
@@ -22,6 +23,9 @@ RUN apt-get update && \
     /var/lib/apt/lists/* \
     /tmp/* \
     /var/tmp/* && \
+    mkdir -p ~/.cargo && \
+    cp /app/conf/cargo-config ~/.cargo/config && \
     cd /app && cargo build --release && cargo test && cp /app/target/release/badwolf-run /usr/bin/badwolf-run  && \
     /usr/local/lib/rustlib/uninstall.sh && \
-    rm -rf /app
+    rm -rf /app \
+    ~/.cargo
