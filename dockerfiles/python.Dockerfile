@@ -14,11 +14,10 @@ RUN apt-get update && \
     python3.4 python3.4-dev \
     python3.5 python3.5-dev \
     pypy && \
-    python2.6 /tmp/ez_setup.py && easy_install-2.6 pip pytest tox && \
-    python3.4 /tmp/ez_setup.py && easy_install-3.4 pip pytest tox && \
-    python3.5 /tmp/ez_setup.py && easy_install-3.5 pip pytest tox && \
-    pypy /tmp/ez_setup.py && easy_install_pypy pip pytest tox && \
-    python2.7 /tmp/ez_setup.py && easy_install-2.7 pip pytest tox && \
+    python2.6 /tmp/ez_setup.py && easy_install-2.6 pip && \
+    python3.4 /tmp/ez_setup.py && easy_install-3.4 pip && \
+    python3.5 /tmp/ez_setup.py && easy_install-3.5 pip && \
+    python2.7 /tmp/ez_setup.py && easy_install-2.7 pip && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* \
     /tmp/* \

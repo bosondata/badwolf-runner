@@ -11,4 +11,4 @@ RUN curl -sO $RUST_DIST_SERVER/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.
     rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz \
     /var/lib/apt/lists/* \
     /tmp/* \
-    /var/tmp/* && \
+    /var/tmp/*
