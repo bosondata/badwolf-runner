@@ -9,6 +9,7 @@ RUN apt-get update && \
     wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O /tmp/ez_setup.py && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    libffi-dev \
     python2.6 python2.6-dev \
     python2.7 python2.7-dev \
     python3.4 python3.4-dev \
