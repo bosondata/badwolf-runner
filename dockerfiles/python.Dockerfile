@@ -14,7 +14,7 @@ RUN apt-get update && \
     python2.7 python2.7-dev \
     python3.4 python3.4-dev \
     python3.5 python3.5-dev \
-    pypy && \
+    pypy pypy-dev && \
     ln -s /usr/bin/python2.7 /usr/bin/python && \
     ln -s /usr/bin/python2.7 /usr/bin/python2 && \
     python2.6 /tmp/ez_setup.py && easy_install-2.6 pip && \
