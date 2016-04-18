@@ -1,7 +1,7 @@
 FROM messense/badwolf-test-runner:base
 MAINTAINER Messense Lv <messense@icloud.com>
 
-ENV RUST_VERSION=1.7.0
+ENV RUST_VERSION=1.8.0
 ENV RUST_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 
 RUN curl -sO $RUST_DIST_SERVER/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz && \
