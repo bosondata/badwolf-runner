@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:16.04
 MAINTAINER Messense Lv <messense@icloud.com>
 
 ENV RUST_VERSION=1.8.0
