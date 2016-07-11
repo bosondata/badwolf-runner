@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Messense Lv <messense@icloud.com>
 
-ENV RUST_VERSION=1.8.0
+ENV RUST_VERSION=1.10.0
 ENV RUST_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 # ENV RUST_DIST_SERVER=https://static.rust-lang.org
 
