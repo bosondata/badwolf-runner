@@ -8,5 +8,5 @@ name = "badwolf-run"
 path = "src/main.rs"
 
 [dependencies]
-clap = "2.9"
+clap = "2.10"
 yaml-rust = "0.3"
