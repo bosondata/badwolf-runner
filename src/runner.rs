@@ -33,6 +33,7 @@ impl Runner {
 
     fn run_commands(&self, commands: &[String]) -> (bool, i32) {
         for command in commands {
+            println!("{}", command);
             let status = Command::new("sh")
                                     .arg("-c")
                                     .arg(command)
@@ -40,6 +41,7 @@ impl Runner {
                                     .unwrap_or_else(|e| {
                 panic!("Failed to execute process: {}", e);
             });
+            println!("");
             if !status.success() {
                 return (false, status.code().unwrap_or(-1i32));
             }
