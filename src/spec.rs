@@ -1,13 +1,13 @@
 use yaml_rust::{Yaml, YamlLoader};
 
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug)]
 pub struct Notification {
     pub email: Vec<String>,
 }
 
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug)]
 pub struct Specification {
     pub dockerfile: String,
     pub services: Vec<String>,

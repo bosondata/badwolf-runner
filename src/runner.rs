@@ -5,7 +5,7 @@ use std::process::Command;
 use spec::Specification;
 
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug)]
 pub struct Runner {
     pub spec: Specification,
 }
